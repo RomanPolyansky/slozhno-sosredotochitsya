@@ -2,4 +2,189 @@
 
 .page {
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+  font-family: var(--font);
+  color: var(--regular-font-color);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto 1fr;
+  background-color: var(--accent-dark-color);
+}
+
+
+.header {
+  position: relative;
+  padding-inline: 10px;
+  padding-block: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  align-items: center;
+  background-image: url(../images/cover-image-dark.png);
+  background-position: center;
+  background-size: cover;
+}
+
+.header__decor {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  top: 0;
+  right: 0;
+  margin-inline: 10px;
+  margin-block: 10px;
+}
+
+.header__decor-rec {
+  color: var(--accent-color);
+  line-height: 25px;
+}
+
+.header__decor-lamp {
+  height: 9px;
+  width: 9px;
+  margin-inline-end: 9px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  box-shadow: 0 0 4px 2px var(--accent-color);
+  align-self: center;
+}
+
+.decorated-zone::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-inline: 10px;
+  margin-block: 10px;
+  width: 25px;
+  height: 25px;
+  border-top: solid var(--accent-color) 1px;
+  border-right: solid var(--accent-color) 1px;
+}
+
+.decorated-zone::after {
+  content: '';
+  position: absolute;
+  margin-inline: 10px;
+  margin-block: 10px;
+  bottom: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  border-left: solid var(--accent-color) 1px;
+  border-bottom: solid var(--accent-color) 1px;
+}
+
+.header__theme-menu {
+  justify-self: end;
+}
+
+.header__theme-menu-button {
+  background-color: transparent;
+  border: solid 0 transparent;
+  color: var(--accent-color);
+  text-transform: lowercase;
+}
+
+.header__theme-menu-list {
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+}
+
+.header__title {
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  line-height: 82.5%;
+  color: var(--accent-secondary-color);
+  text-shadow: 4px 4px 0 var(--accent-color);
+}
+
+.header__subtext-wrapper {
+  inline-size: 100%;
+  justify-self: end;
+}
+
+.title-decor {
+  background-color: var(--accent-color);
+  color: var(--accent-dark-color);
+  font-weight: bold;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding-inline: 10px;
+  padding-block-start: 40px; /* меняется в зависимости от размера экрана */
+}
+
+.article {
+  display: grid;
+  grid-template-columns: 1fr; /* меняется в зависимости от размера экрана */
+  gap: 20px;
+}
+
+.article__title {
+  color: var(--accent-color);
+}
+
+.article__card-title.regular {
+  font-weight: normal;
+}
+
+.article__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.article__card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.article__card-text a {
+  position: relative;
+  text-shadow: 2px 1px 0 var(--accent-color);
+  text-decoration: none;
+}
+
+.article__card-text a:hover::after{ /* искусственное подчеркивание без эффекта тени */
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 1px; /* отступ снизу */
+  width: 100%;
+  height: 1px; /* толщина линии */
+  background-color: currentColor; /* цвет линии будет таким же, как у текста */
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr; /* меняется в зависимости от размера экрана */
+  gap: 10px; /* меняется в зависимости от размера экрана */
+}
+
+.gallery__picture img {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.footer {
+  inline-size: 100%;
+  block-size: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer__text {
+  color: var(--accent-secondary-color);
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  font-weight: bold;
+  text-shadow: 2px 2px 0 var(--accent-color);
 }

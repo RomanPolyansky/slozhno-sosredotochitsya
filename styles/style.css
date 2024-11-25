@@ -20,7 +20,7 @@
     "title"
     "subtext";
   align-items: center;
-  padding-block: 20px;
+  padding-block: 10px; /* меняется в зависимости от размера экрана */
   block-size: 668px; /* меняется в зависимости от размера экрана */
 }
 
@@ -271,6 +271,7 @@
       "title title"
       ". subtext";
     block-size: 1024px;
+    padding-block: 20px;
   }
 
   .header__decor {

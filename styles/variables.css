@@ -6,7 +6,6 @@
 :root {
   --font: "IBM Plex mono", sans-serif;
   --headline-font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
-  --cover-background-image: url(../images/cover-image-dark.png);
   --accent-color: #ff0070;
   --accent-secondary-color: #db00ff;
   --accent-dark-color: #000028;

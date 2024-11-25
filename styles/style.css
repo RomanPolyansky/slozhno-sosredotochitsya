@@ -8,6 +8,18 @@
   line-height: 23.4px;
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   background-color: var(--background-color);
+  background-image: var(--cover-background-image);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.page.theme-light{
+  --cover-background-image: url(../images/cover-image-light.png);
+}
+
+.page.theme-dark {
+  --cover-background-image: url(../images/cover-image-dark.png);
 }
 
 .header {
@@ -22,22 +34,6 @@
   align-items: center;
   padding-block: 10px; /* меняется в зависимости от размера экрана */
   block-size: 668px; /* меняется в зависимости от размера экрана */
-}
-
-.header__cover-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  opacity: var(
-    --cover-image-opacity,
-    0.5
-  ); /* меняется в зависимости от размера экрана и темы */
-  background-image: var(--cover-background-image);
-  background-position: center;
-  background-size: cover;
 }
 
 .header__decor {
@@ -343,7 +339,7 @@
   }
 
   .footer {
-    block-size: 1024px; /* размер с паддингами */
+    block-size: 1024px;
   }
 }
 
@@ -373,10 +369,6 @@
   .header {
     padding-block: 20px;
     block-size: 768px;
-  }
-
-  .header__cover-image {
-    --cover-image-opacity: 1;
   }
 
   .header__theme-menu {
@@ -417,5 +409,17 @@
 
   .footer {
     block-size: 768px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .page.theme_auto {
+   --cover-background-image: url(../images/cover-image-dark.png);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .page.theme_auto {
+   --cover-background-image: url(../images/cover-image-light.png);
   }
 }

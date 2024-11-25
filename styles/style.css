@@ -14,7 +14,7 @@
   background-size: cover;
 }
 
-.page.theme-light{
+.page.theme-light {
   --cover-background-image: url(../images/cover-image-light.png);
 }
 
@@ -414,12 +414,12 @@
 
 @media (prefers-color-scheme: dark) {
   .page.theme_auto {
-   --cover-background-image: url(../images/cover-image-dark.png);
+    --cover-background-image: url(../images/cover-image-dark.png);
   }
 }
 
 @media (prefers-color-scheme: light) {
   .page.theme_auto {
-   --cover-background-image: url(../images/cover-image-light.png);
+    --cover-background-image: url(../images/cover-image-light.png);
   }
 }

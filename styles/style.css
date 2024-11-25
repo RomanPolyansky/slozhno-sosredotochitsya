@@ -8,7 +8,7 @@
   background-color: var(--background-color);
   line-height: 23.4px;
   font-size: 18px;
-}
+} 
 
 
 .header {
@@ -16,16 +16,26 @@
   padding-block: 20px;
   display: grid;
   grid-template-columns: 1fr; /* меняется в зависимости от размера экрана */
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: 1fr auto 1fr;
   grid-template-areas: 
           "theme"
           "title"
           "subtext";
   align-items: center;
-  background-image: var(--cover-background-image);
+  block-size: 668px; /* меняется в зависимости от размера экрана */
+}
+
+.header__cover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: var(--cover-image-opacity, 0.5); /* меняется в зависимости от размера экрана и темы */
+  background-image: var(--cover-background-image); 
   background-position: center;
   background-size: cover;
-  block-size: 668px; /* меняется в зависимости от размера экрана */
 }
 
 .header__decor {
@@ -105,6 +115,18 @@
   block-size: 26px;
 }
 
+.header__theme-menu-button:hover {
+  outline: solid 1px color-mix(in srgb, currentColor 40%, transparent);
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-within {
+  border-bottom: solid 1px currentColor;
+}
+
 .header__theme-menu-button.header__theme-menu-button_active {
   border: solid 1px var(--button-color);
 }
@@ -162,12 +184,6 @@
   font-weight: normal;
 }
 
-.article__content {
-  display: flex;
-  flex-direction: column; /* меняется в зависимости от размера экрана */
-  gap: 20px;
-}
-
 .article__card {
   display: flex;
   flex-direction: column;
@@ -182,6 +198,14 @@
   position: relative;
   text-shadow: 2px 1px 0 var(--link-shadow);
   text-decoration: none;
+}
+
+.article__card-text a:focus {
+  outline: none;
+}
+
+.article__card-text a:focus-within {
+  outline: solid 1px currentColor;
 }
 
 .article__card-text a:hover::after{ /* искусственное подчеркивание без эффекта тени */
@@ -243,7 +267,6 @@
             ". subtext";
     grid-template-columns: 1fr 1fr;
     block-size: 1024px;
-    padding-block: 105px;
   }
   
   .header__decor {
@@ -272,26 +295,6 @@
     gap: 80px;
     padding-inline: 20px;
     padding-block-start: 60px; 
-  }
-
-  .article {
-    grid-template-columns: 1fr 2fr;
-  }
-
-  .article:nth-child(2n + 1) > :first-child {
-   grid-row: 1 / -1;
-  }
-  
-  .article:nth-child(2n + 1) > :not(:first-child) {
-    grid-column: 2 / -1;
-  }
- 
-   .article:nth-child(2n) > :first-child {
-    grid-row: 1 / 2;
-  }
-   
-  .article:nth-child(2n) > :not(:first-child) {
-     grid-column: 1 / -1;
   }
 
   .gallery {
@@ -339,31 +342,72 @@
   }
 }
 
+@media (768px <= width < 1024px) {
+  .article {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .article:nth-child(2n + 1) > :first-child {
+   grid-row: 1 / -1;
+  }
+  
+  .article:nth-child(2n + 1) > :not(:first-child) {
+    grid-column: 2 / -1;
+  }
+ 
+   .article:nth-child(2n) > :first-child {
+    grid-row: 1 / 2;
+  }
+   
+  .article:nth-child(2n) > :not(:first-child) {
+     grid-column: 1 / -1;
+  }
+}
+
 @media (width >= 1024px) {
   .header {
     block-size: 768px;
+    padding-block: 20px;
+  }
+
+  .header__cover-image {
+    --cover-image-opacity: 1;
   }
 
   .header__theme-menu {
     align-self: start;
     justify-self: center;
+    padding-inline-end: 0;
   }
 
   .header__theme-menu-list {
     flex-direction: row;
   }
-
-  .article:nth-child(2n) .article__title {
-    inline-size: calc(100% / 3);
+  
+  .article {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
-  .article:nth-child(2n + 1) {
-    grid-template-columns: 1fr 2fr;
+  .article:nth-child(2n + 1) > :first-child {
+    grid-row: 1 / -1;
+  }
+
+  .article:nth-child(2n + 1) > :not(:first-child) {
+    grid-column: 2 / -1;
+  }
+  
+  .article:nth-child(2n) > :first-child {
+    grid-row: 1 / 2;
+  }
+   
+  .article:nth-child(2n) > :not(:first-child) {
+    grid-row: 2;
+    grid-column: auto;
   }
 
   .gallery_wrapper {
-    height: 100%;
     max-block-size: 1048px;
+    grid-template-rows: 260px 315px 428px;
   }
 
   .footer {

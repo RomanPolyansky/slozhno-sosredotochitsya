@@ -23,6 +23,7 @@
   --decor-color: var(--regular-font-color);
   --button-color: var(--regular-font-color);
   --link-shadow: var(--accent-dark-color);
+  --cover-image-opacity: 1;
 }
 
 .page.theme_light .header__decor {

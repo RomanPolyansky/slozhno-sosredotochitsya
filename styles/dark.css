@@ -24,3 +24,9 @@
   --button-color: var(--accent-color);
   --link-shadow: var(--accent-color);
 }
+
+@media (prefers-color-scheme: dark) {
+  .page.theme_auto {
+    --cover-background-image: var(--dark-theme-cover-image);
+  }
+}

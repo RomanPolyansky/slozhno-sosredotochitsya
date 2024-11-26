@@ -5,21 +5,20 @@
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
   font-family: var(--font);
   font-size: 18px;
-  line-height: 23.4px;
-  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  line-height: 1.3em;
   background-color: var(--background-color);
   background-image: var(--cover-background-image);
-  background-attachment: fixed;
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .page.theme-light {
-  --cover-background-image: url(../images/cover-image-light.png);
+  --cover-background-image: var(--light-theme-cover-image);
 }
 
 .page.theme-dark {
-  --cover-background-image: url(../images/cover-image-dark.png);
+  --cover-background-image: var(--dark-theme-cover-image);
 }
 
 .header {
@@ -33,30 +32,25 @@
     "subtext";
   align-items: center;
   padding-block: 10px; /* меняется в зависимости от размера экрана */
-  block-size: 668px; /* меняется в зависимости от размера экрана */
-}
-
-.header__decor {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  margin-inline: 10px; /* меняется в зависимости от размера экрана */
-  margin-block: 10px; /* меняется в зависимости от размера экрана */
+  min-block-size: min(668px, 100vh); /* меняется в зависимости от размера экрана */
 }
 
 .header__decor-rec {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-inline-end: var(--decor-margin, 10px); /* меняется в зависимости от размера экрана */
+  padding-block-start: var(--decor-margin, 10px); /* меняется в зависимости от размера экрана */
   color: var(--accent-color);
   line-height: 25px;
 }
 
-.header__decor-lamp {
-  align-self: center;
+.header__decor-rec::after {
+  content: '';
+  display: inline-block;
   width: 9px;
   height: 9px;
-  margin-inline-end: 9px;
+  margin-inline: 10px;
   border-radius: 50%;
   box-shadow: 0 0 4px 2px var(--accent-color);
   background-color: var(--accent-color);
@@ -100,7 +94,7 @@
   gap: 10px;
 }
 
-.header__theme-menu-list li {
+.header__theme-menu-item {
   line-height: 1em;
 }
 
@@ -110,6 +104,7 @@
   color: var(--button-color);
   text-transform: lowercase;
   background-color: transparent;
+  cursor: pointer;
   block-size: 26px;
 }
 
@@ -179,7 +174,7 @@
   font-size: inherit;
 }
 
-.article__card-title.regular {
+h4.article__card-title {
   font-weight: normal;
 }
 
@@ -189,7 +184,7 @@
   gap: 10px;
 }
 
-.bm-1 {
+.article__card > .article__card-title:has(+.article__card) {
   margin-block-end: 10px;
 }
 
@@ -207,15 +202,8 @@
   outline: solid 1px currentColor;
 }
 
-.article__card-text a:hover::after {
-  /* искусственное подчеркивание без эффекта тени */
-  content: "";
-  position: absolute;
-  bottom: 1px; /* отступ снизу */
-  left: 0;
-  width: 100%;
-  height: 1px; /* толщина линии */
-  background-color: currentColor; /* цвет линии будет таким же, как у текста */
+.article__card-text a:hover {
+  border-bottom: solid 1px currentColor;
 }
 
 .gallery {
@@ -249,7 +237,7 @@
   justify-content: center;
   align-items: center;
   inline-size: 100%;
-  block-size: 668px; /* меняется в зависимости от размера экрана */
+  min-block-size: min(668px, 100vh); /* меняется в зависимости от размера экрана */
 }
 
 .footer__text {
@@ -266,13 +254,12 @@
       "theme theme"
       "title title"
       ". subtext";
-    block-size: 1024px;
     padding-block: 20px;
+    min-block-size: min(1024px, 100vh);
   }
 
-  .header__decor {
-    margin-inline: 20px;
-    margin-block: 20px;
+  .header__decor-rec {
+    --decor-margin: 20px;
   }
 
   .decorated-zone {
@@ -304,13 +291,9 @@
   }
 
   .gallery_wrapper {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 192px 230px 318px;
-    grid-auto-flow: row;
     gap: 20px;
-    height: 100%;
-    max-block-size: 780px;
   }
 
   .gallery__image:nth-child(1) {
@@ -339,36 +322,28 @@
   }
 
   .footer {
-    block-size: 1024px;
+    min-block-size: min(1024px, 100vh);
   }
 }
 
 @media (768px <= width < 1024px) {
+
   .article {
     grid-template-columns: 1fr 2fr;
   }
 
-  .article:nth-child(2n + 1) > :first-child {
-    grid-row: 1 / -1;
-  }
-
-  .article:nth-child(2n + 1) > :not(:first-child) {
+  .article .article__card {
     grid-column: 2 / -1;
   }
 
-  .article:nth-child(2n) > :first-child {
-    grid-row: 1 / 2;
-  }
-
-  .article:nth-child(2n) > :not(:first-child) {
+  .article.column-aligned .article__card {
     grid-column: 1 / -1;
   }
 }
 
 @media (width >= 1024px) {
   .header {
-    padding-block: 20px;
-    block-size: 768px;
+    min-block-size: min(768px, 100vh);
   }
 
   .header__theme-menu {
@@ -385,41 +360,20 @@
     grid-template-columns: 1fr 1fr 1fr;
   }
 
-  .article:nth-child(2n + 1) > :first-child {
-    grid-row: 1 / -1;
-  }
-
-  .article:nth-child(2n + 1) > :not(:first-child) {
+  .article .article__card {
     grid-column: 2 / -1;
   }
 
-  .article:nth-child(2n) > :first-child {
-    grid-row: 1 / 2;
-  }
-
-  .article:nth-child(2n) > :not(:first-child) {
+  .article.column-aligned .article__card {
     grid-column: auto;
     grid-row: 2;
   }
 
   .gallery_wrapper {
     grid-template-rows: 260px 315px 428px;
-    max-block-size: 1048px;
   }
 
   .footer {
-    block-size: 768px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .page.theme_auto {
-    --cover-background-image: url(../images/cover-image-dark.png);
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  .page.theme_auto {
-    --cover-background-image: url(../images/cover-image-light.png);
+    min-block-size: min(768px, 100vh);
   }
 }

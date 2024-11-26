@@ -4,7 +4,7 @@
 */
 
 :root {
-  --font: "IBM Plex mono", sans-serif;
+  --font: "IBM Plex mono", monospace;
   --headline-font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
   --accent-color: #ff0070;
   --accent-secondary-color: #db00ff;
@@ -19,6 +19,11 @@
   --decor-color: var(--accent-color);
   --button-color: var(--accent-color);
   --link-shadow: var(--accent-color);
+
+  --light-theme-cover-image: url(../images/cover-image-light.png);
+  --dark-theme-cover-image: url(../images/cover-image-dark.png);
+
+  --decor-margin: 10px;
 }
 
 @media (width >= 768px) {

@@ -28,6 +28,7 @@
   display: none;
 }
 
+
 @media (prefers-color-scheme: light) {
   :root {
     /* Дублируем переменные светлой темы */
@@ -44,5 +45,13 @@
     --decor-color: var(--regular-font-color);
     --button-color: var(--regular-font-color);
     --link-shadow: var(--accent-dark-color);
+  }
+
+  .page.theme_auto {
+    --cover-background-image: var(--light-theme-cover-image);
+  }
+  
+  .page.theme_auto .header__decor {
+    display: none;
   }
 }

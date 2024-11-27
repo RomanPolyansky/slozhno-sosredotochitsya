@@ -13,14 +13,6 @@
   background-attachment: fixed;
 }
 
-.page.theme-light {
-  --cover-background-image: var(--light-theme-cover-image);
-}
-
-.page.theme-dark {
-  --cover-background-image: var(--dark-theme-cover-image);
-}
-
 .header {
   position: relative;
   display: grid;
@@ -37,6 +29,7 @@
 
 .header__decor-rec {
   position: absolute;
+  display: var(--rec-display-mode, inline-block);
   top: 0;
   right: 0;
   padding-inline-end: var(--decor-margin, 10px); /* меняется в зависимости от размера экрана */
@@ -189,7 +182,6 @@ h4.article__card-title {
 }
 
 .article__card-text a {
-  position: relative;
   text-decoration: none;
   text-shadow: 2px 1px 0 var(--link-shadow);
 }
@@ -336,7 +328,7 @@ h4.article__card-title {
     grid-column: 2 / -1;
   }
 
-  .article.column-aligned .article__card {
+  .article.wide-article .article__card {
     grid-column: 1 / -1;
   }
 }
@@ -364,7 +356,7 @@ h4.article__card-title {
     grid-column: 2 / -1;
   }
 
-  .article.column-aligned .article__card {
+  .article.wide-article .article__card {
     grid-column: auto;
     grid-row: 2;
   }

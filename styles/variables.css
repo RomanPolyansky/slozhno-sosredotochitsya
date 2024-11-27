@@ -19,10 +19,8 @@
   --decor-color: var(--accent-color);
   --button-color: var(--accent-color);
   --link-shadow: var(--accent-color);
-
   --light-theme-cover-image: url(../images/cover-image-light.png);
   --dark-theme-cover-image: url(../images/cover-image-dark.png);
-
   --decor-margin: 10px;
 }
 

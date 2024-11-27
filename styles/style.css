@@ -30,7 +30,6 @@
 .header__decor-rec {
   position: absolute;
   display: var(--rec-display-mode, inline-block);
-  display: var(--rec-display-mode, inline-block);
   top: 0;
   right: 0;
   padding-inline-end: var(--decor-margin, 10px); /* меняется в зависимости от размера экрана */

@@ -23,10 +23,11 @@
   --decor-color: var(--accent-color);
   --button-color: var(--accent-color);
   --link-shadow: var(--accent-color);
+  --rec-display-mode: inline-block;
 }
 
 @media (prefers-color-scheme: dark) {
-  .page.theme_auto {
+  .page {
     --cover-background-image: var(--dark-theme-cover-image);
   }
 }

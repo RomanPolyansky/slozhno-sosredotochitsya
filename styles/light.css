@@ -22,12 +22,9 @@
   --decor-color: var(--regular-font-color);
   --button-color: var(--regular-font-color);
   --link-shadow: var(--accent-dark-color);
+  --cover-background-image: var(--light-theme-cover-image);
+  --rec-display-mode: none;
 }
-
-.page.theme_light .header__decor {
-  display: none;
-}
-
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -45,13 +42,7 @@
     --decor-color: var(--regular-font-color);
     --button-color: var(--regular-font-color);
     --link-shadow: var(--accent-dark-color);
-  }
-
-  .page.theme_auto {
     --cover-background-image: var(--light-theme-cover-image);
-  }
-  
-  .page.theme_auto .header__decor {
-    display: none;
+    --rec-display-mode: none;
   }
 }
